@@ -1,0 +1,33 @@
+/* datatable */
+
+.datatable {
+    width: 135%;
+}
+
+.datatable table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-break: break-all;
+}
+
+.datatable .caption {
+    background-color: var(--datatable-color);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 0.25rem 0.5rem;
+}
+
+.datatable td, .datatable th {
+    border: 1px solid var(--datatable-color);
+    padding: 0.5em;
+}
+
+.datatable tbody tr:nth-child(2n-1) {
+    background-color: var(--datatable-dark-cell-color);
+}
+
+.datatable .no-data {
+    text-align: left;
+}
