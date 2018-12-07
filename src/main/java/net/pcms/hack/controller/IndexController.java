@@ -7,9 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
 @Controller
@@ -34,11 +33,11 @@ public class IndexController extends BaseController {
         return "redirect:/";
     }
 
-    @GetMapping(path = "/get")
-    public void get(@RequestParam(value = "hash") String hash, HttpServletResponse response) throws IOException {
+    @ResponseBody
+    @GetMapping(path = "/get/{hash}")
+    public String get(@PathVariable(value = "hash") String hash) {
         Test test = getTestService().findByHash(hash);
-        response.getWriter().print(test == null ? "null" : test.getAnswer());
-        response.getWriter().flush();
+        return test == null ? "null" : test.getAnswer();
     }
 
     @GetMapping(path = "/update/{hash}")
