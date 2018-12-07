@@ -34,7 +34,7 @@ public class IndexController extends BaseController {
     }
 
     @ResponseBody
-    @GetMapping(path = "/get/{hash}")
+    @GetMapping(path = "/get/{hash}", produces = "text/plain")
     public String get(@PathVariable(value = "hash") String hash) {
         Test test = getTestService().findByHash(hash);
         return test == null ? "null" : test.getAnswer();
