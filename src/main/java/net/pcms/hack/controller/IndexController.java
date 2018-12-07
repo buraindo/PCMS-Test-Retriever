@@ -23,6 +23,7 @@ public class IndexController extends BaseController {
     @SuppressWarnings({"deprecation", "UnstableApiUsage"})
     @GetMapping(path = "/add")
     public String add(@RequestParam(value = "content") String content) {
+        System.out.println("add");
         Test test = new Test();
         test.setContent(content);
         String hash = Hashing.sha1().hashString(content, StandardCharsets.UTF_8).toString();
@@ -36,6 +37,7 @@ public class IndexController extends BaseController {
     @ResponseBody
     @GetMapping(path = "/get/{hash}", produces = "text/plain")
     public String get(@PathVariable(value = "hash") String hash) {
+        System.out.println("get");
         Test test = getTestService().findByHash(hash);
         return test == null ? "null" : test.getAnswer();
     }
